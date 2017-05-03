@@ -19,9 +19,9 @@ end
 #create
 post '/users' do
   @user = User.new(params[:user])
-  @user.password = @user.hashed_password
-  @user.save
-  if @user.valid?
+  # @user.password = @user.hashed_password
+  if @user.save
+    status 200
     redirect '/users'
   else
     status 422
@@ -47,6 +47,7 @@ def update_user
   @user = User.find(params[:id])
   @user.update(params[:user])
   if @user.valid?
+    status 200
     redirect "/users/#{@user.id}"
   else
     status 422
@@ -55,9 +56,9 @@ def update_user
   end
 end
 
-patch '/users/:id' do
-  update_user
-end
+# patch '/users/:id' do
+#   update_user
+# end
 
 put '/users/:id' do
   update_user

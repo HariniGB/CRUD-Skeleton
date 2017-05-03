@@ -30,13 +30,7 @@
       <li><%= erb :"sessions/_delete"%></li>
     <% end %>
   </ul>
-  <% if @errors %>
-    <ul>
-      <% @errors.each do |error| %>
-        <li><%= error %></li>
-      <% end %>
-    </ul>
-  <% end %>
+  <%= erb :'_errors' %>
   <div class="container">
   <%= yield %>
   </div>
